@@ -7,7 +7,7 @@ $(package)_sha256_hash=7c289d2eaabf82fa6ac219107ce632d704672dcfb966e1a7ff0bbc4ce
 $(package)_dependencies=serd
 
 define $(package)_set_vars
-  $(package)_config_opts=--static --no-shared
+  $(package)_config_opts=--static --no-utils --no-shared
 endef
 
 define $(package)_preprocess_cmds

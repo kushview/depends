@@ -7,7 +7,7 @@ $(package)_sha256_hash=26a37790890c9c1f838203b47f5b2320334fe92c02a4d26ebbe2669db
 $(package)_dependencies=lv2 serd sord sratom
 
 define $(package)_set_vars
-  $(package)_config_opts=--static --no-shared
+  $(package)_config_opts=--static --no-utils --no-shared
 endef
 
 define $(package)_preprocess_cmds
