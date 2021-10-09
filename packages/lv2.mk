@@ -17,7 +17,7 @@ define $(package)_config_cmds
 endef
 
 define $(package)_build_cmds
-  $(WAF) build --progress
+  $(WAF) build
 endef
 
 define $(package)_stage_cmds
