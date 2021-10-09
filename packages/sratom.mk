@@ -7,7 +7,7 @@ $(package)_sha256_hash=3acb32b1adc5a2b7facdade2e0818bcd6c71f23f84a1ebc17815bb7a0
 $(package)_dependencies=lv2 serd sord
 
 define $(package)_set_vars
-  $(package)_config_opts=--static --no-shared
+  $(package)_config_opts=
 endef
 
 define $(package)_preprocess_cmds
@@ -18,7 +18,7 @@ define $(package)_config_cmds
 endef
 
 define $(package)_build_cmds
-  $(WAF) build --progress
+  $(WAF) build
 endef
 
 define $(package)_stage_cmds

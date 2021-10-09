@@ -5,7 +5,7 @@ $(package)_file_name=$(package)-$($(package)_version).tar.bz2
 $(package)_sha256_hash=affa80deec78921f86335e6fc3f18b80aefecf424f6a5755e9f2fa0eb0710edf
 
 define $(package)_set_vars
-  $(package)_config_opts=--static --no-utils --no-shared
+  $(package)_config_opts=--no-utils
 endef
 
 define $(package)_preprocess_cmds
@@ -16,7 +16,7 @@ define $(package)_config_cmds
 endef
 
 define $(package)_build_cmds
-  $(WAF) build -v
+  $(WAF) build
 endef
 
 define $(package)_stage_cmds
