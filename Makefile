@@ -241,31 +241,31 @@ $(host_prefix)/share/config.site : config.site.in $(host_prefix)/.stamp_$(final_
 						$< > $@
 	$(AT)touch $@
 
-$(host_prefix)/environ.sh : environ.sh.in $(host_prefix)/share/config.site
+$(host_prefix)/share/config.json : config.json.in $(host_prefix)/share/config.site
 	$(AT)@mkdir -p $(@D)
 	$(AT)sed -e 's|@HOST@|$(host)|' \
-						-e 's|@CC@|$(host_CC)|' \
-						-e 's|@CXX@|$(host_CXX)|' \
-						-e 's|@AR@|$(host_AR)|' \
-						-e 's|@RANLIB@|$(host_RANLIB)|' \
-						-e 's|@NM@|$(host_NM)|' \
-						-e 's|@STRIP@|$(host_STRIP)|' \
-						-e 's|@build_os@|$(build_os)|' \
-						-e 's|@host_os@|$(host_os)|' \
-						-e 's|@CFLAGS@|$(strip $(host_CFLAGS) $(host_$(release_type)_CFLAGS))|' \
-						-e 's|@CXXFLAGS@|$(strip $(host_CXXFLAGS) $(host_$(release_type)_CXXFLAGS))|' \
-						-e 's|@CPPFLAGS@|$(strip $(host_CPPFLAGS) $(host_$(release_type)_CPPFLAGS))|' \
-						-e 's|@LDFLAGS@|$(strip $(host_LDFLAGS) $(host_$(release_type)_LDFLAGS))|' \
-						-e 's|@allow_host_packages@|$(ALLOW_HOST_PACKAGES)|' \
-						-e 's|@no_qt@|$(NO_QT)|' \
-						-e 's|@no_qr@|$(NO_QR)|' \
-						-e 's|@no_zmq@|$(NO_ZMQ)|' \
-						-e 's|@no_wallet@|$(NO_WALLET)|' \
-						-e 's|@no_upnp@|$(NO_UPNP)|' \
-						-e 's|@no_natpmp@|$(NO_NATPMP)|' \
-						-e 's|@multiprocess@|$(MULTIPROCESS)|' \
-						-e 's|@debug@|$(DEBUG)|' \
-						$< > $@
+				-e 's|@CC@|$(host_CC)|' \
+				-e 's|@CXX@|$(host_CXX)|' \
+				-e 's|@AR@|$(host_AR)|' \
+				-e 's|@RANLIB@|$(host_RANLIB)|' \
+				-e 's|@NM@|$(host_NM)|' \
+				-e 's|@STRIP@|$(host_STRIP)|' \
+				-e 's|@build_os@|$(build_os)|' \
+				-e 's|@host_os@|$(host_os)|' \
+				-e 's|@CFLAGS@|$(strip $(host_CFLAGS) $(host_$(release_type)_CFLAGS))|' \
+				-e 's|@CXXFLAGS@|$(strip $(host_CXXFLAGS) $(host_$(release_type)_CXXFLAGS))|' \
+				-e 's|@CPPFLAGS@|$(strip $(host_CPPFLAGS) $(host_$(release_type)_CPPFLAGS))|' \
+				-e 's|@LDFLAGS@|$(strip $(host_LDFLAGS) $(host_$(release_type)_LDFLAGS))|' \
+				-e 's|@allow_host_packages@|$(ALLOW_HOST_PACKAGES)|' \
+				-e 's|@no_qt@|$(NO_QT)|' \
+				-e 's|@no_qr@|$(NO_QR)|' \
+				-e 's|@no_zmq@|$(NO_ZMQ)|' \
+				-e 's|@no_wallet@|$(NO_WALLET)|' \
+				-e 's|@no_upnp@|$(NO_UPNP)|' \
+				-e 's|@no_natpmp@|$(NO_NATPMP)|' \
+				-e 's|@multiprocess@|$(MULTIPROCESS)|' \
+				-e 's|@debug@|$(DEBUG)|' \
+				$< > $@
 	$(AT)touch $@
 
 define check_or_remove_cached
@@ -297,7 +297,7 @@ clean-all: clean
 clean:
 	@rm -rf $(WORK_PATH) $(BASE_CACHE) $(BUILD)
 
-install: check-packages $(host_prefix)/share/config.site $(host_prefix)/environ.sh
+install: check-packages $(host_prefix)/share/config.site $(host_prefix)/share/config.json
 
 lipo:
 	@python3 $(BASEDIR)/lipo.py

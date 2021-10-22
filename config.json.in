@@ -1,0 +1,12 @@
+{
+    "AR": "@AR@",
+    "CC": "@CC@",
+    "CXX": "@CXX@",
+    "RANLIB": "@RANLIB@",
+    "NM": "@NM@",
+    "STRIP": "@STRIP@",
+    "CPPFLAGS": "@CPPFLAGS@",
+    "CFLAGS": "@CFLAGS@",
+    "CXXFLAGS": "@CXXFLAGS@",
+    "LINKFLAGS": "@LDFLAGS@"
+}
