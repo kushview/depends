@@ -39,7 +39,7 @@ NO_ZMQ ?=
 NO_UPNP ?=
 NO_NATPMP ?=
 MULTIPROCESS ?=
-FALLBACK_DOWNLOAD_PATH ?= https://bitcoincore.org/depends-sources
+FALLBACK_DOWNLOAD_PATH ?= https://sources.kushview.net
 
 BUILD = $(shell ./config.guess)
 HOST ?= $(BUILD)
