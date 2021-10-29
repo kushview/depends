@@ -117,6 +117,12 @@ darwin_CXX=env -u C_INCLUDE_PATH -u CPLUS_INCLUDE_PATH \
 darwin_CFLAGS=-pipe
 darwin_CXXFLAGS=$(darwin_CFLAGS)
 
+ifdef OSX_UNIVERSAL
+darwin_CFLAGS += -arch arm64 -arch x86_64
+darwin_CXXFLAGS += -arch arm64 -arch x86_64
+darwin_LDFLAGS += -arch arm64 -arch x86_64
+darwin_CPPFLAGS += -arch arm64 -arch x86_64
+else
 OSX_ARCH?=
 ifeq ($(host_arch),arm)
   OSX_ARCH = arm64
@@ -130,6 +136,7 @@ darwin_CFLAGS += -arch $(OSX_ARCH)
 darwin_CXXFLAGS += -arch $(OSX_ARCH)
 darwin_LDFLAGS += -arch $(OSX_ARCH)
 darwin_CPPFLAGS += -arch $(OSX_ARCH)
+endif
 endif
 
 darwin_release_CFLAGS=-O2
