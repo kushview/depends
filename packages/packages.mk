@@ -1,4 +1,4 @@
-packages:=boost
+packages:=boost lua
 
 qrencode_packages = qrencode
 
