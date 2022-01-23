@@ -1,0 +1,21 @@
+--- a/src/Makefile	2021-02-09 13:47:17.000000000 -0500
++++ b/src/Makefile	2022-01-23 08:46:59.571026729 -0500
+@@ -121,6 +121,9 @@
+ 
+ linux-noreadline:
+ 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl"
++	$(CC) -shared -ldl -Wl,-soname,liblua5.4.so -o liblua5.4.so \
++		-Wl,--whole-archive -L./ -llua -Wl,--no-whole-archive \
++		-lm $(MYLDFLAGS)
+ 
+ linux-readline:
+ 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX -DLUA_USE_READLINE" SYSLIBS="-Wl,-E -ldl -lreadline"
+@@ -130,7 +133,7 @@
+ 
+ mingw:
+ 	$(MAKE) "LUA_A=lua54.dll" "LUA_T=lua.exe" \
+-	"AR=$(CC) -shared -o" "RANLIB=strip --strip-unneeded" \
++	"AR=$(CC) -shared -Wl,--out-implib,lua54.dll.a -o" "RANLIB=strip --strip-unneeded" \
+ 	"SYSCFLAGS=-DLUA_BUILD_AS_DLL" "SYSLIBS=" "SYSLDFLAGS=-s" lua.exe
+ 	$(MAKE) "LUAC_T=luac.exe" luac.exe
+ 
