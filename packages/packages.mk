@@ -1,4 +1,7 @@
 packages:=boost lua
+ifeq ($(host_os),linux)
+packages+=freetype
+endif
 
 qrencode_packages = qrencode
 
