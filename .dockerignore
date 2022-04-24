@@ -1,0 +1,6 @@
+/built/
+/sources/
+/work/
+/*-pc-linux-gnu/
+/*-w64-mingw32/
+/*-apple-darwin*/
