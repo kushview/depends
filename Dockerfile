@@ -1,18 +1,17 @@
 FROM ubuntu:bionic
 
-RUN apt update && apt-get install -y \
-    git build-essential mingw-w64 clang curl python python3 pkg-config \
-    libcurl4-openssl-dev libfreetype6-dev libx11-dev libxext-dev \
+RUN apt-get update && apt-get install -y \
+    git build-essential mingw-w64 clang curl python python3 python3-pip \
+    pkg-config libcurl4-openssl-dev libfreetype6-dev libx11-dev libxext-dev \
     libxrandr-dev libxcomposite-dev libxinerama-dev libxcursor-dev \
-    libjack-dev libasound2-dev ladspa-sdk \
-    libcurl4-openssl-dev libgtk2.0-dev \
-    libfuse2 imagemagick \
-    lua-ldoc lua-markdown zip unzip nsis golang
+    libjack-dev libasound2-dev ladspa-sdk libcurl4-openssl-dev libgtk2.0-dev \
+    libfuse2 imagemagick lua-ldoc lua-markdown zip unzip nsis golang ninja-build
 RUN update-alternatives --set x86_64-w64-mingw32-gcc /usr/bin/x86_64-w64-mingw32-gcc-posix; \
     update-alternatives --set x86_64-w64-mingw32-g++ /usr/bin/x86_64-w64-mingw32-g++-posix; \
     update-alternatives --set i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix; \
     update-alternatives --set i686-w64-mingw32-g++ /usr/bin/i686-w64-mingw32-g++-posix
-RUN apt clean && apt autoclean
+RUN apt-get clean && apt-get autoclean
+RUN pip3 install -Iv meson==0.61.5
 
 ADD . /depends
 RUN cd /depends && make HOST=x86_64-pc-linux-gnu
